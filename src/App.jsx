@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import api from "./api/albums";
 import { fetchAlbumsAction } from "./redux/album/album.actions";
+import SidebarPage from "./components/sidebar/sidebar-page";
 
 const App = () => {
   const { albums } = useSelector((state) => state.album);
@@ -18,7 +19,11 @@ const App = () => {
   useEffect(() => {
     fetchAlbums();
   }, []);
-  return <div></div>;
+  return (
+    <div>
+      <SidebarPage />
+    </div>
+  );
 };
 
 export default App;
