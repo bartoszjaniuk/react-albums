@@ -7,14 +7,33 @@ const AlbumsList = () => {
   const { albums } = useSelector((state) => state.album);
   const { isOpen } = useSelector((state) => state.sidebar);
   return (
-    <div className={`${isOpen ? "albums active" : ""}`}>
+    <div className={`${isOpen ? "albums active" : "albums"}`}>
       <div className="albums__container">
-        {albums.map((album) => {
-          return <AlbumItem {...album} key={album.id} />;
-        })}
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
+        <AlbumItem {...albums} />
       </div>
     </div>
   );
 };
 
 export default AlbumsList;
+
+{
+  /* <div className={`${isOpen ? "albums active" : ""}`}>
+<div className="albums__container">
+  {albums.map((album) => {
+    return <AlbumItem {...album} key={album.id} />;
+  })}
+</div>
+</div> */
+}
