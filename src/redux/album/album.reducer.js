@@ -12,6 +12,12 @@ const albumReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         albums: payload,
       };
+
+    case AlbumActionTypes.PAGINATE_ALBUMS:
+      return {
+        ...state,
+        albums: payload,
+      };
     default:
       return state;
   }

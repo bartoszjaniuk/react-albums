@@ -1,0 +1,19 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: 0.3rem;
+  }
+  &__item {
+    border: 1px solid #444;
+    padding: 2px 0.7rem;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: violet;
+    }
+  }
+}
