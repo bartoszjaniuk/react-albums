@@ -99,13 +99,13 @@
       border-left: 6px solid transparent;
       cursor: pointer;
       &:hover {
-        background-color: rgb(74, 172, 172);
+        background-color: var(--color-primary);
       }
 
       &-active {
         border-left: 6px solid blueviolet;
 
-        background-color: rgb(74, 172, 172);
+        background-color: var(--color-primary);
 
         .nav__list__text {
           color: blueviolet;

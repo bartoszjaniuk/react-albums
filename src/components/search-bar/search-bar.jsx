@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./search-bar.styles.scss";
 
-const SearchBar = () => {
+const SearchBar = ({ searchItems }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setInputValue(e.target.value);
+    searchItems(inputValue);
+  };
   return (
     <div className="search-container">
       <form action="">
-        <input type="text" placeholder="Search" className="search-input" />
+        <input
+          type="text"
+          placeholder="Search"
+          className="search-input"
+          value={inputValue}
+          onChange={(e) => handleChange(e)}
+        />
       </form>
     </div>
   );
