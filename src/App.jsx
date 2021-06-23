@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Menu />
-      <AlbumsList />
+      {/* <AlbumsList /> */}
     </>
   );
 };
