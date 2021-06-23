@@ -1,0 +1,146 @@
+@mixin hamburger-line {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #444;
+  left: 0;
+}
+
+.hamburger {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0;
+  background-color: transparent;
+  &__container {
+    width: 40px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+  }
+  &__inner {
+    @include hamburger-line;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    &::before,
+    &::after {
+      @include hamburger-line;
+      content: "";
+      transition: all 0.3s ease-in-out;
+    }
+
+    &::before {
+      top: -10px;
+    }
+
+    &::after {
+      top: 10px;
+    }
+  }
+}
+
+.hamburger-active {
+  right: 0;
+  width: auto;
+  .hamburger__inner {
+    background-color: transparent;
+
+    &::before {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    &::after {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+  }
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0px 10px grey;
+  height: 100vh;
+  z-index: 10;
+  transition: all 0.4s ease-in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__logo-container {
+    width: 100px;
+    margin-top: 150px;
+  }
+
+  &__logo {
+    width: 100%;
+    height: auto;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0px;
+    margin-top: 50px;
+    &__text {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+    }
+    &__item {
+      list-style: none;
+      transition: all 0.4s ease-in;
+      padding: 1rem 3.5rem;
+      border-left: 6px solid transparent;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(74, 172, 172);
+      }
+
+      &-active {
+        border-left: 6px solid blueviolet;
+
+        background-color: rgb(74, 172, 172);
+
+        .nav__list__text {
+          color: blueviolet;
+          transition: all 0.4s ease-in;
+        }
+
+        .nav__list__link {
+          svg {
+            color: blueviolet;
+          }
+        }
+      }
+    }
+
+    &__link {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      color: #444;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.4s ease-in;
+    }
+
+    svg {
+      color: #444;
+      font-size: 2rem;
+    }
+  }
+  &-closed {
+    transition: all 0.4s ease-in;
+  }
+  &-closed &__list__text {
+    position: static;
+    opacity: 1;
+    transition: all 0.4s ease-in;
+  }
+}

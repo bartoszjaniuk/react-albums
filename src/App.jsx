@@ -1,28 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import api from "./api/albums";
-import { fetchAlbumsAction } from "./redux/album/album.actions";
-import SidebarPage from "./components/sidebar/sidebar-page";
+import React from "react";
+import AlbumsList from "./components/albums/albums-list/albums-list";
+import Menu from "./components/menu/menu";
+import useFetchData from "./custom-hooks/useFetchData";
 
 const App = () => {
-  const { albums } = useSelector((state) => state.album);
-  const dispatch = useDispatch();
-  const fetchAlbums = async () => {
-    try {
-      const response = await api.get("/");
-      dispatch(fetchAlbumsAction(response.data));
-    } catch (error) {
-      console.log("Fetching data from API has been failed 💣");
-    }
-  };
-
-  useEffect(() => {
-    fetchAlbums();
-  }, []);
+  useFetchData("/");
   return (
-    <div>
-      <SidebarPage />
-    </div>
+    <>
+      <Menu />
+      <AlbumsList />
+    </>
   );
 };
 

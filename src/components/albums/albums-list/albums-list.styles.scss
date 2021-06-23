@@ -1,0 +1,17 @@
+.albums {
+  transition: all .4s ease-in-out;
+  height: 100vh;
+  &__container {
+    margin-top: 10rem;
+    padding: 0 15rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    transform: translateX(0px);
+  }
+}
+
+.active {
+  transform: translateX(175px);
+  width: calc(100vw - 350px);
+}
