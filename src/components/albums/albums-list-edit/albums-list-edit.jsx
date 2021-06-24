@@ -28,7 +28,7 @@ const AlbumsListEdit = () => {
             <h2 className="userId">USERID</h2>
           </div>
           {currentAlbums.map((album, index) => {
-            return <AlbumItemEdit {...album} key={index} />;
+            return <AlbumItemEdit album={album} key={index} />;
           })}
         </div>
         <Pagination

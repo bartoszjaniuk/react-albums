@@ -15,6 +15,15 @@ export const deleteAlbumAction = (album) => ({
 });
 
 export const editAlbumAction = (album) => ({
-  type: AlbumActionTypes.DELETE_ALBUM,
+  type: AlbumActionTypes.UPDATE_ALBUM,
   payload: album,
+});
+
+export const setEditingAlbumIdAction = (albumToEdit) => ({
+  type: AlbumActionTypes.SET_EDITING_ALBUM_ID,
+  payload: albumToEdit,
+});
+
+export const toggleEditModeAction = () => ({
+  type: AlbumActionTypes.TOGGLE_EDIT_MODE,
 });

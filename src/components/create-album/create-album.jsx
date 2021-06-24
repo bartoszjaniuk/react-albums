@@ -1,27 +1,51 @@
 import React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createAlbumAction } from "../../redux/album/album.actions";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  createAlbumAction,
+  editAlbumAction,
+} from "../../redux/album/album.actions";
 import api from "../../api/albums";
 
 const CreateAlbum = () => {
+  const {
+    edit: { isEditing, albumToEdit },
+    albums,
+  } = useSelector((state) => state.album);
+
   const dispatch = useDispatch();
-  const [albums, setAlbums] = useState([]);
   const [inputValues, setInputValues] = useState({
     title: "",
     userId: "",
   });
   const { title, userId } = inputValues;
 
+  useEffect(() => {
+    // if (!isEditing) return;
+    if (isEditing) {
+      setInputValues({
+        title: albumToEdit.title,
+        userId: albumToEdit.userId,
+      });
+    }
+  }, [albumToEdit]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newAlbum = {
-      id: new Date().getTime().toString(),
-      title: title,
-      userId: userId,
-    };
-    const createdAlbum = await api.post("/", newAlbum);
-    dispatch(createAlbumAction(createdAlbum.data));
+
+    if (albumToEdit.id === null) {
+      const newAlbum = {
+        id: new Date().getTime().toString(),
+        title: title,
+        userId: userId,
+      };
+      const createdAlbum = await api.post("/", newAlbum);
+      dispatch(createAlbumAction(createdAlbum.data));
+    } else {
+      const editingAlbum = albums.find((album) => album.id === albumToEdit.id);
+      const updatedAlbum = { ...editingAlbum, title, userId };
+      dispatch(editAlbumAction(updatedAlbum));
+    }
 
     setInputValues({
       title: "",
@@ -51,7 +75,7 @@ const CreateAlbum = () => {
           onChange={handleChange}
           name="userId"
         />
-        <button type="submit">ADD</button>
+        <button type="submit">{isEditing ? "EDIT" : "ADD"}</button>
       </form>
     </div>
   );
