@@ -9,6 +9,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     max-width: 1500px;
+    align-items: center;
   }
 
   &__headings {
@@ -17,13 +18,45 @@
   }
 }
 
+.albums-items {
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-right: 8rem;
+}
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+
 @media screen and (max-width: 550px) {
   .albums-edit {
     &__container {
       margin-left: 0px;
       display: flex;
-      margin-top: 200px;
       justify-content: center;
     }
+  }
+
+  .albums-items {
+    margin-right: 50px;
+    margin-left: 50px;
   }
 }

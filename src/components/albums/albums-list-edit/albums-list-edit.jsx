@@ -22,14 +22,21 @@ const AlbumsListEdit = () => {
       <div className={`${isOpen ? "albums-edit active" : "albums-edit"}`}>
         <div className="albums-edit__container">
           <CreateAlbum />
-          <div className="albums-edit__headings">
-            <h2 className="id">ID</h2>
-            <h2 className="title">TITLE</h2>
-            <h2 className="userId">USERID</h2>
+          <div className="albums-items">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">TITLE</th>
+                  <th scope="col">USERID</th>
+                  <th scope="col">ACTION</th>
+                </tr>
+              </thead>
+              {currentAlbums.map((album, index) => {
+                return <AlbumItemEdit album={album} key={index} />;
+              })}
+            </table>
           </div>
-          {currentAlbums.map((album, index) => {
-            return <AlbumItemEdit album={album} key={index} />;
-          })}
         </div>
         <Pagination
           itemsPerPage={poststPerPage}

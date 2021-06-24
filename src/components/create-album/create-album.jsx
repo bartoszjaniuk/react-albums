@@ -6,6 +6,7 @@ import {
   editAlbumAction,
 } from "../../redux/album/album.actions";
 import api from "../../api/albums";
+import styles from "./create-album.module.scss";
 
 const CreateAlbum = () => {
   const {
@@ -34,13 +35,20 @@ const CreateAlbum = () => {
     e.preventDefault();
 
     if (albumToEdit.id === null) {
-      const newAlbum = {
-        id: new Date().getTime().toString(),
-        title: title,
-        userId: userId,
-      };
-      const createdAlbum = await api.post("/", newAlbum);
-      dispatch(createAlbumAction(createdAlbum.data));
+      if (
+        inputValues.title === "" ||
+        inputValues.userId === "" ||
+        isNaN(inputValues.userId)
+      ) {
+        alert("Values cannot be empty!");
+      } else {
+        const newAlbum = {
+          title: title,
+          userId: userId,
+        };
+        const createdAlbum = await api.post("/", newAlbum);
+        dispatch(createAlbumAction(createdAlbum.data));
+      }
     } else {
       const editingAlbum = albums.find((album) => album.id === albumToEdit.id);
       const updatedAlbum = { ...editingAlbum, title, userId };
@@ -58,24 +66,33 @@ const CreateAlbum = () => {
   };
 
   return (
-    <div>
-      <h2>Create new Album</h2>
+    <div className={styles.card}>
+      <h2 className={styles.title}>
+        {isEditing ? "Edit" : "Create new"} Album
+      </h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={title}
-          placeholder="title"
-          onChange={handleChange}
-          name="title"
-        />
-        <input
-          type="text"
-          value={userId}
-          placeholder="userId"
-          onChange={handleChange}
-          name="userId"
-        />
-        <button type="submit">{isEditing ? "EDIT" : "ADD"}</button>
+        <div className={styles.formGroup}>
+          <input
+            className={styles.inputField}
+            type="text"
+            value={title}
+            placeholder="title"
+            onChange={handleChange}
+            name="title"
+          />
+          <input
+            className={styles.inputField}
+            type="text"
+            value={userId}
+            placeholder="userId"
+            onChange={handleChange}
+            name="userId"
+          />
+        </div>
+
+        <button className={styles.submitBtn} type="submit">
+          {isEditing ? "EDIT" : "ADD"}
+        </button>
       </form>
     </div>
   );

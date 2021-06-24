@@ -19,19 +19,53 @@ const AlbumItemEdit = ({ album }) => {
     dispatch(setEditingAlbumIdAction(albumToEdit));
   };
   return (
-    <div className={styles.box}>
-      <div className={styles.id}>{id}</div>
-      <div className={styles.title}>{title}</div>
-      <div className={styles.userId}>{userId}</div>
-      <div className={styles.buttonGroup}>
-        <button className="btn btn-edit" onClick={() => handleEdit(album)}>
-          <AiFillEdit />
-        </button>
-        <button className="btn btn-delete" onClick={() => handleDelete(id)}>
-          <AiFillDelete />
-        </button>
-      </div>
-    </div>
+    // <div className={styles.box}>
+    //   <div className={styles.id}>
+    //     <strong>ID: </strong>
+    //     {id}
+    //   </div>
+    //   <div className={styles.title}>
+    //     <strong>TITLE: </strong> {title}
+    //   </div>
+    //   <div className={styles.userId}>
+    //     {" "}
+    //     <strong>USERID: </strong> {userId}
+    //   </div>
+    // <div className={styles.buttonGroup}>
+    //   <button className="btn btn-edit" onClick={() => handleEdit(album)}>
+    //     <AiFillEdit />
+    //   </button>
+    //   <button className="btn btn-delete" onClick={() => handleDelete(id)}>
+    //     <AiFillDelete />
+    //   </button>
+    // </div>
+    // </div>
+
+    <>
+      <tbody>
+        <tr>
+          <td data-label="Account">{id}</td>
+          <td data-label="Due Date">{title}</td>
+          <td data-label="Amount">{userId}</td>
+          <td data-label="Action">
+            <div className={styles.buttonGroup}>
+              <button
+                className="btn btn-edit"
+                onClick={() => handleEdit(album)}
+              >
+                <AiFillEdit />
+              </button>
+              <button
+                className="btn btn-delete"
+                onClick={() => handleDelete(id)}
+              >
+                <AiFillDelete />
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </>
   );
 };
 
