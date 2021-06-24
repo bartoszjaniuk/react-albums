@@ -1,0 +1,23 @@
+.box {
+  box-shadow: 0px 0px 5px;
+  padding: 1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.id {
+  min-width: 30px;
+}
+
+.title {
+  min-width: 500px;
+}
+
+.buttonGroup {
+  position: absolute;
+  right: 0;
+  display: flex;
+}

@@ -4,7 +4,17 @@ export const fetchAlbumsAction = (albums) => ({
   payload: albums,
 });
 
-export const paginateAlbums = (albums) => ({
-  type: AlbumActionTypes.PAGINATE_ALBUMS,
-  payload: albums,
+export const createAlbumAction = (album) => ({
+  type: AlbumActionTypes.CREATE_ALBUM,
+  payload: album,
+});
+
+export const deleteAlbumAction = (album) => ({
+  type: AlbumActionTypes.DELETE_ALBUM,
+  payload: album,
+});
+
+export const editAlbumAction = (album) => ({
+  type: AlbumActionTypes.DELETE_ALBUM,
+  payload: album,
 });

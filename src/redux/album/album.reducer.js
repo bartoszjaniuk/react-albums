@@ -13,10 +13,10 @@ const albumReducer = (state = INITIAL_STATE, { type, payload }) => {
         albums: payload,
       };
 
-    case AlbumActionTypes.PAGINATE_ALBUMS:
+    case AlbumActionTypes.CREATE_ALBUM:
       return {
         ...state,
-        albums: payload,
+        albums: [payload, ...state.albums],
       };
     default:
       return state;

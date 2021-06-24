@@ -1,0 +1,29 @@
+.albums-edit {
+  width: 100vw;
+
+  &__container {
+    margin-left: 300px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    max-width: 1500px;
+  }
+
+  &__headings {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .albums-edit {
+    &__container {
+      margin-left: 0px;
+      display: flex;
+      margin-top: 200px;
+      justify-content: center;
+    }
+  }
+}

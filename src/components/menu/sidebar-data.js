@@ -15,8 +15,8 @@ export const navigationLinks = [
   },
   {
     id: 2,
-    url: "/about",
-    text: "about",
+    url: "/dashboard",
+    text: "dashboard",
     icon: <AiOutlineContacts />,
   },
   {
