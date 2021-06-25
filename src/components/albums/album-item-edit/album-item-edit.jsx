@@ -22,9 +22,9 @@ const AlbumItemEdit = ({ album }) => {
     <>
       <tbody>
         <tr>
-          <td data-label="Account">{id}</td>
-          <td data-label="Due Date">{title}</td>
-          <td data-label="Amount">{userId}</td>
+          <td data-label="Id">{id}</td>
+          <td data-label="Title">{title}</td>
+          <td data-label="UserId">{userId}</td>
           <td data-label="Action">
             <div className={styles.buttonGroup}>
               <button
