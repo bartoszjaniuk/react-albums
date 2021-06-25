@@ -1,28 +1,27 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   createAlbumAction,
   editAlbumAction,
-} from "../../redux/album/album.actions";
-import api from "../../api/albums";
-import styles from "./create-album.module.scss";
+} from '../../redux/album/album.actions';
+import api from '../../api/albums';
+import styles from './create-album.module.scss';
 
 const CreateAlbum = () => {
   const {
     edit: { isEditing, albumToEdit },
     albums,
-  } = useSelector((state) => state.album);
+  } = useSelector(state => state.album);
 
   const dispatch = useDispatch();
   const [inputValues, setInputValues] = useState({
-    title: "",
-    userId: "",
+    title: '',
+    userId: '',
   });
   const { title, userId } = inputValues;
 
   useEffect(() => {
-    // if (!isEditing) return;
     if (isEditing) {
       setInputValues({
         title: albumToEdit.title,
@@ -31,36 +30,36 @@ const CreateAlbum = () => {
     }
   }, [albumToEdit]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     if (albumToEdit.id === null) {
       if (
-        inputValues.title === "" ||
-        inputValues.userId === "" ||
+        inputValues.title === '' ||
+        inputValues.userId === '' ||
         isNaN(inputValues.userId)
       ) {
-        alert("Values cannot be empty!");
+        alert('Values cannot be empty!');
       } else {
         const newAlbum = {
           title: title,
           userId: userId,
         };
-        const createdAlbum = await api.post("/", newAlbum);
+        const createdAlbum = await api.post('/', newAlbum);
         dispatch(createAlbumAction(createdAlbum.data));
       }
     } else {
-      const editingAlbum = albums.find((album) => album.id === albumToEdit.id);
+      const editingAlbum = albums.find(album => album.id === albumToEdit.id);
       const updatedAlbum = { ...editingAlbum, title, userId };
       dispatch(editAlbumAction(updatedAlbum));
     }
 
     setInputValues({
-      title: "",
-      userId: "",
+      title: '',
+      userId: '',
     });
   };
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { value, name } = e.target;
     setInputValues({ ...inputValues, [name]: value });
   };
@@ -68,7 +67,7 @@ const CreateAlbum = () => {
   return (
     <div className={styles.card}>
       <h2 className={styles.title}>
-        {isEditing ? "Edit" : "Create new"} Album
+        {isEditing ? 'Edit' : 'Create new'} Album
       </h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
@@ -91,7 +90,7 @@ const CreateAlbum = () => {
         </div>
 
         <button className={styles.submitBtn} type="submit">
-          {isEditing ? "EDIT" : "ADD"}
+          {isEditing ? 'EDIT' : 'ADD'}
         </button>
       </form>
     </div>
