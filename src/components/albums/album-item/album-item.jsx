@@ -1,5 +1,5 @@
-import React from "react";
-import "./albums.item.styles.scss";
+import React from 'react';
+import './albums.item.styles.scss';
 
 const AlbumItem = ({ id, title, userId }) => {
   return (
@@ -14,5 +14,3 @@ const AlbumItem = ({ id, title, userId }) => {
 };
 
 export default AlbumItem;
-
-// https://www.youtube.com/watch?v=59z1_3-vTOk&ab_channel=DipeshMalvia
