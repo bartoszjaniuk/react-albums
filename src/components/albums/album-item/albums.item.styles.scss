@@ -42,10 +42,10 @@
 .btn-edit {
   font-size: 1.3rem;
   color: #fff;
-  background-color: rgb(70, 177, 166);
+  background-color: var(--color-primary);
   transition: background-color 0.3s ease-in-out;
   &:hover {
-    background-color: rgb(182, 255, 248);
+    background-color: var(--color-primary-hover);
   }
 }
 .btn-delete {

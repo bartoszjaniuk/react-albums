@@ -75,7 +75,7 @@ const CreateAlbum = () => {
             className={styles.inputField}
             type="text"
             value={title}
-            placeholder="title"
+            placeholder="enter title"
             onChange={handleChange}
             name="title"
           />
@@ -83,7 +83,7 @@ const CreateAlbum = () => {
             className={styles.inputField}
             type="text"
             value={userId}
-            placeholder="userId"
+            placeholder="enter user's id"
             onChange={handleChange}
             name="userId"
           />

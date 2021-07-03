@@ -6,14 +6,18 @@
     list-style: none;
     display: flex;
     gap: 0.3rem;
+    flex-wrap: wrap;
   }
   &__item {
     border: 1px solid #444;
-    padding: 2px 0.7rem;
+    padding: 1px 0.7rem;
     border-radius: 3px;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
     &:hover {
       background-color: var(--color-primary);
+      color: white;
+      border-color: white;
     }
   }
 }

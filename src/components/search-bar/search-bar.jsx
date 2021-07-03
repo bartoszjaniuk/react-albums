@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import "./search-bar.styles.scss";
+import React, { useState } from 'react';
+import './search-bar.styles.scss';
 
 const SearchBar = ({ searchItems }) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     e.preventDefault();
     setInputValue(e.target.value);
     searchItems(inputValue);
@@ -14,10 +14,10 @@ const SearchBar = ({ searchItems }) => {
       <form action="">
         <input
           type="text"
-          placeholder="Search"
+          placeholder="search 🔍"
           className="search-input"
           value={inputValue}
-          onChange={(e) => handleChange(e)}
+          onChange={e => handleChange(e)}
         />
       </form>
     </div>
