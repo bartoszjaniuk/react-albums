@@ -1,24 +1,30 @@
 .albums {
-  width: 100vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  grid-gap: 2rem;
+  gap: 2rem;
+  border-radius: 5px;
+  margin-top: 3rem;
+}
 
-  &__container {
-    margin-left: 300px;
-    display: flex;
-    margin-top: 50px;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 3rem;
-    max-width: 1500px;
+@media screen and (max-width: 1400px) {
+  .albums {
+    width: 800px;
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 1000px) {
   .albums {
-    &__container {
-      margin-left: 0px;
-      display: flex;
-      justify-content: center;
-    }
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .albums {
+    width: 300px;
   }
 }
