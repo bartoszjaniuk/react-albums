@@ -31,7 +31,7 @@
     &::before,
     &::after {
       @include hamburger-line;
-      content: "";
+      content: '';
       transition: all 0.3s ease-in-out;
     }
 
@@ -62,20 +62,23 @@
 }
 
 .nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 0px 0px 10px grey;
+  box-shadow: 0px 0px 5px rgb(221, 221, 221);
   height: 100vh;
+  width: 80px;
   z-index: 10;
-  transition: all 0.4s ease-in;
+  transition: all 0.3s ease-in;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgb(255, 255, 255);
 
   &__logo-container {
-    width: 100px;
+    width: 80px;
     margin-top: 150px;
+    transition: all 0.3s ease-in;
   }
 
   &__logo {
@@ -86,17 +89,28 @@
     display: flex;
     flex-direction: column;
     padding-left: 0px;
-    margin-top: 50px;
+    margin-top: 20px;
+    width: 100%;
+
+    &__link {
+      display: flex;
+      color: #444;
+      text-decoration: none;
+      font-weight: 500;
+      justify-content: center;
+      transition: all 0.1s ease-in;
+      width: 100%;
+      font-size: 1.1rem;
+    }
     &__text {
       position: absolute;
       opacity: 0;
-      transition: opacity 0.2s ease-in-out;
+      transition: all 0.1s ease-in;
     }
     &__item {
       list-style: none;
-      transition: all 0.4s ease-in;
-      padding: 1rem 3.5rem;
-      border-left: 6px solid transparent;
+      transition: all 0.3s ease-in;
+      padding: 1rem 0;
       cursor: pointer;
       &:hover {
         background-color: var(--color-primary);
@@ -132,16 +146,32 @@
 
     svg {
       color: #444;
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
   }
   &-closed {
-    transition: all 0.4s ease-in;
+    transition: all 0.3s ease-in;
+    width: 250px;
+
+    .nav__logo-container {
+      width: 180px;
+      transition: all 0.3s ease-in;
+    }
+    .nav__list {
+      margin-top: 0;
+      transition: all 0.3s ease-in;
+    }
+
+    .nav__list__link {
+      margin-left: 2.5rem;
+      justify-content: start;
+      transition: all 0.3s ease-in;
+    }
   }
   &-closed &__list__text {
     position: static;
     opacity: 1;
-    transition: all 0.4s ease-in;
+    transition: all 0.4s ease-in-out;
   }
 }
 
